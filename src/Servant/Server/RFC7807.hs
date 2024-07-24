@@ -43,7 +43,7 @@ import Data.Proxy (Proxy)
 import Data.Semigroup ((<>))
 import Data.String (fromString)
 
-import qualified Data.Aeson as Aeson (FromJSON, ToJSON, encode)
+import qualified Data.Aeson as Aeson (FromJSON, ToJSON, eitherDecode, encode)
 import Network.HTTP.Media ((//), (/:), renderHeader)
 import Network.HTTP.Types (hContentType)
 import Servant.API.ContentTypes
@@ -51,7 +51,6 @@ import Servant.API.ContentTypes
     , MimeRender(mimeRender)
     , MimeUnrender(mimeUnrender)
     , contentType
-    , eitherDecodeLenient
     )
 import Servant.Server
 
@@ -78,9 +77,9 @@ instance Accept ProblemJSON where
 instance Aeson.ToJSON a => MimeRender ProblemJSON a where
     mimeRender _ = Aeson.encode
 
--- | 'eitherDecodeLenient'
+-- | 'eitherDecode'
 instance Aeson.FromJSON a => MimeUnrender ProblemJSON a where
-    mimeUnrender _ = eitherDecodeLenient
+    mimeUnrender _ = Aeson.eitherDecode
 
 -- | Construct Servant 'ServerError' with RFC7807 style response body.
 --

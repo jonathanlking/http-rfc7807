@@ -359,11 +359,11 @@ defaultEncodingOptions = EncodingOptions
 --     -> 'Aeson.Encoding'
 -- @
 toKeyValue
-    :: forall kv errorType errorInfo context
+    :: forall e kv errorType errorInfo context
     .   ( Aeson.ToJSON errorType
         , Aeson.ToJSON errorInfo
         , Aeson.ToJSON context
-        , Aeson.KeyValue kv
+        , Aeson.KeyValue e kv
         , Monoid kv
         )
     => EncodingOptions
