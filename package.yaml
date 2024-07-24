@@ -60,7 +60,7 @@ library:
     # ^ Version bounds to match servant-server.
     - servant-server >=0.16 && <1
     # ^ ServantErr was renamed to ServerError in version 0.16.
-    - text >=1.2.3.0 && <2
+    - text >=1.2.3.0 && <2.2
     # ^ Lower bound based on servant.
     - wai >=3.2.1.2 && <4
     # ^ Lower bound based on servant-server.
@@ -89,6 +89,6 @@ tests:
       - http-types >=0.12.2 && <1
       - servant >=0.16 && <1
       - servant-server >=0.16 && <1
-      - text >=1.2.3.0 && <2
+      - text >=1.2.3.0 && <2.2
 
     ghc-options: ["-threaded", "-rtsopts", "-with-rtsopts=-N"]
